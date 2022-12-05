@@ -272,8 +272,7 @@ vector<pair<double, int>> Operatecoefficients(string s, int *o)
 
         //keeping track of the greatest power to know the degree
 		if (power > *o)
-			*
-			o = power;
+			*o = power;
 
         //jump to the next term in the equation
 		index += 2;

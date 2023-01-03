@@ -7,15 +7,15 @@ using Durand-Kerner method.
 ## To Run
 Your input should follow some rules:
 
-    1- Contains only numbers and 'x', '+', '-', '^' and spaces
+    1- The input consists only of numbers, 'x', '+', '-', '^', and spaces.
 
-    2- After the power is only a number
+    2- Following the exponent must be a number.
 
-    3- After x is space or power or an end line
+    3- After 'x', there must be a space or a exponent.
 
-    4- After the sign is space and after the space is x or a number
+    4- After a sign, there must be a space, followed by 'x' or a number.
 
-    5- one space before the sign and other one after the space 
+    5- There must be one space before a sign and another space after the preceding space. 
 ## Examples
 
     1x^21 - x^16 - 14x^8 - 6x^8 + 24x + 40

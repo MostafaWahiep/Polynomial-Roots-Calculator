@@ -16,7 +16,7 @@ Your input should follow some rules:
     4- After the sign is space and after the space is x or a number
 
     5- one space before the sign and other one after the space 
-## Usage/Examples
+## Examples
 
     1x^21 - x^16 - 14x^8 - 6x^8 + 24x + 40
 

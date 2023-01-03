@@ -4,7 +4,7 @@
 Solving all the roots of the input polynomial of any degree simultaneously including the complex solutions
 using Durand-Kerner method.
 
-## To Run:
+## To Run
 Your input should follow some rules:
 
     1- Contains only numbers and 'x', '+', '-', '^' and spaces

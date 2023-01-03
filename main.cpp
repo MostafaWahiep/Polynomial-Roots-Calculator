@@ -10,6 +10,8 @@ using namespace std;
 
 const double epsilon = 1e-15; //stopping criteria when relative less than epsilon
 
+int counter; // To maintain a count of the number of solutions that have been printed
+
 //functions' prototype
 
 complex<double> SolveFor(complex<double> x, double coefficients[], int n);
@@ -61,7 +63,9 @@ int main()
 	for (int i = 0; i < poly.size(); i++)
 		coefficients[n - poly[i].second] += poly[i].first;
 
+
     //printing the coefficients
+    cout << "Coefficients: ";
 	for (int i = 0; i < n + 1; i++)
 		cout << coefficients[i] << " ";
 	cout << endl;
@@ -85,7 +89,7 @@ int main()
         //reducing the equation: x^3 + 2x^2 = x^2(x+2) and solve for x+2
 		while (coefficients[n] == 0)
 		{
-			cout << 0 << endl;
+			cout << "X" << setw(2) << left << ++counter << " = 0" << endl;
 			n--;
 		}
 
@@ -145,7 +149,7 @@ void iteration(double coefficients[], complex<double> *initial, int n)
 		}
 	}
 
-	cout << "It takes "<< itr << " Iterations\n";
+	//cout << "It takes "<< itr << " Iterations\n";
 
 	//some solutions would have small imaginary due to floating point imprecision so make them real
 	for (int i = 0; i < n; i++)
@@ -172,7 +176,7 @@ void PrintSolutions(complex<double> *initial, int n)
 {
     for (int i = 0; i < n; i++)
 	{
-		cout << "X" << setw(2) << left << i + 1 << " = " << setw(10) << initial[i].real();
+		cout << "X" << setw(2) << left << ++counter << " = " << setw(10) << fixed <<setprecision(5) << initial[i].real();
 		if (initial[i].imag() > 0)
 			cout << "+ " << initial[i].imag() << 'i';
 		else if (initial[i].imag() < 0)
@@ -272,7 +276,8 @@ vector<pair<double, int>> Operatecoefficients(string s, int *o)
 
         //keeping track of the greatest power to know the degree
 		if (power > *o)
-			*o = power;
+			*
+			o = power;
 
         //jump to the next term in the equation
 		index += 2;

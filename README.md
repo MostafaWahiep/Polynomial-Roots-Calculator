@@ -7,7 +7,7 @@ using Durand-Kerner method.
 ## To Run
 Your input should follow some rules:
 
-    1- The input consists only of numbers, 'x', '+', '-', '^', and spaces.
+    1- The input consists only of numbers, 'x', '+', '-', '.', '^', and spaces.
 
     2- Following the exponent must be a number.
 

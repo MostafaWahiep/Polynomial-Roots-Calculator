@@ -10,17 +10,12 @@ Your input should follow some rules:
     1- The input consists only of numbers, 'x', '+', '-', '.', '^', and spaces.
 
     2- Following the exponent must be a number.
-
-    3- After 'x', there must be a space or a exponent.
-
-    4- After a sign, there must be a space, followed by 'x' or a number.
-
-    5- There must be one space before a sign and another space after the preceding space. 
+ 
 ## Examples
 
     1x^21 - x^16 - 14x^8 - 6x^8 + 24x + 40
 
-    x^70 + 5.65x^38 - 22x^23 + 5x^8 + 30
+    x^70+5.65x^38-22x^23+5x^8+30
 
 ## Screenshots
 

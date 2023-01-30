@@ -197,16 +197,21 @@ bool CheckValidEquation(string &input_polynomial)
 	for (; i < input_polynomial.size(); i++)
 	{
 	    //contains only allowed characters
-		if (!(input_polynomial[i] == 'x' || input_polynomial[i] == '+' || input_polynomial[i] == '-' || input_polynomial[i] == '^' || (input_polynomial[i] >= '0' && input_polynomial[i] <= '9') || input_polynomial[i] == ' ' || input_polynomial[i] == '.'))
+		if (!(input_polynomial[i] == 'x' || input_polynomial[i] == '+' ||
+                input_polynomial[i] == '-' || input_polynomial[i] == '^' ||
+                (input_polynomial[i] >= '0' && input_polynomial[i] <= '9') || input_polynomial[i] == '.'))
 			return false;
         //after the power is only a number
 		if (input_polynomial[i] == '^' && !(input_polynomial[i + 1] >= '0' && input_polynomial[i + 1] <= '9'))
 			return false;
         //after x is space or power or an end line
-		if (input_polynomial[i] == 'x' && !(input_polynomial[i + 1] == ' ' || input_polynomial[i + 1] == '^' || input_polynomial[i + 1] == '\0'))
+		if (input_polynomial[i] == 'x' && !(input_polynomial[i] == '+' || input_polynomial[i] == '-'
+                || input_polynomial[i + 1] == '^' || input_polynomial[i + 1] == '\0'))
 			return false;
         //after the sign is space and after the space is x or a number
-		if ((input_polynomial[i] == '+' || input_polynomial[i] == '-') && ((input_polynomial[i + 1] != ' ' || input_polynomial[i - 1] != ' ') || !(input_polynomial[i + 2] == 'x' || (input_polynomial[i + 2] >= '0' && input_polynomial[i + 2] <= '9'))))
+		if ((input_polynomial[i] == '+' || input_polynomial[i] == '-')
+            && !(input_polynomial[i + 1] == 'x' || (input_polynomial[i + 1] >= '0' && input_polynomial[i + 1] <= '9'))
+            && !(input_polynomial[i - 1] == 'x' || (input_polynomial[i - 1] >= '0' && input_polynomial[i - 1] <= '9')))
 			return false;
 	}
 

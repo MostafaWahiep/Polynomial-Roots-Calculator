@@ -205,7 +205,7 @@ bool CheckValidEquation(string &input_polynomial)
 		if (input_polynomial[i] == '^' && !(input_polynomial[i + 1] >= '0' && input_polynomial[i + 1] <= '9'))
 			return false;
         //after x is space or power or an end line
-		if (input_polynomial[i] == 'x' && !(input_polynomial[i] == '+' || input_polynomial[i] == '-'
+		if (input_polynomial[i] == 'x' && !(input_polynomial[i+1] == '+' || input_polynomial[i+1] == '-'
                 || input_polynomial[i + 1] == '^' || input_polynomial[i + 1] == '\0'))
 			return false;
         //after the sign is space and after the space is x or a number
@@ -226,7 +226,7 @@ vector<pair<double, int>> Operatecoefficients(string &input_polynomial, int *deg
 	bool sign = false;	// true for -ve false for +ve
 	if (input_polynomial[0] == '-')
 	{
-		index += 1;
+		index ++;
 		sign = true;
 		terms--;
 	}
@@ -234,19 +234,14 @@ vector<pair<double, int>> Operatecoefficients(string &input_polynomial, int *deg
 	while (terms-- && index < input_polynomial.size())
 	{
 		double coefficient = 1; //a default for coefficient is 1: x^3 is 1
-		int power = 0;//a default for pwoer is 0: 2 is 2x^0
+		int power = 0;          //a default for pwoer is 0: 2 is 2x^0
 
 		//check for the sign and jump
 		if (input_polynomial[index] == '-')
-		{
-			sign = true;
-			index += 2;
-		}
-		else if (input_polynomial[index] == '+')
-		{
-			sign = false;
-			index += 2;
-		}
+			sign = true,index ++;
+        else if (input_polynomial[index] == '+')
+			sign = false,index ++;
+
 
         //extract the coefficients
 		if ((input_polynomial[index] >= '0' && input_polynomial[index] <= '9') && index < input_polynomial.size())
@@ -284,7 +279,7 @@ vector<pair<double, int>> Operatecoefficients(string &input_polynomial, int *deg
 			*degree = power;
 
         //jump to the next term in the equation
-		index += 2;
+		index ++;
 
 		if (sign)
 			coefficient *= -1;

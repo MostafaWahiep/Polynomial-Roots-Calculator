@@ -121,10 +121,11 @@ vector<pair<double, int>> ExtractPolynomialTerms(string &input_polynomial, int &
  * prints the solutions to the equation in a formatted manner. The output will include
  * the solution index, real part, and imaginary part.
  *
- * @param initial Array of complex numbers representing the solutions to the equation
- * @param degree Degree of the equation
+ * @param[in] initial Array of complex numbers representing the solutions to the equation
+ * @param[in] degree Degree of the equation
  ******************************************************************************/
 void PrintSolutions(complex<double>* initial, int degree);
+
 
 int main()
 {

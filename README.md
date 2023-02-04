@@ -10,6 +10,12 @@ Your input should follow some rules:
     1- The input consists only of numbers, 'x', '+', '-', '.', '^', and spaces.
 
     2- Following the exponent must be a number.
+    
+    
+## Documentation
+
+The project is thoroughly documented within the code, with each function's documentation provided in Doxygen style immediately preceding its declaration.
+
  
 ## Examples
 

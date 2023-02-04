@@ -142,8 +142,7 @@ int main()
 	vector<pair<double, int>> terms = ExtractPolynomialTerms(input_polynomial, degree);
 
 	// Allocate memory for the coefficients of the polynomial and initialize them to zero
-	double *coefficients = new double[degree + 1]
-	{ 0 };
+	double *coefficients = new double[degree + 1]{0};
 
 	// Fill the coefficients array with values
 	for (int i = 0; i < terms.size(); i++)
@@ -161,6 +160,7 @@ int main()
 	{
 		// Normalize the coefficients with respect to the highest coefficient
 		// This is essential to avoid divergence while iterating on the solutions
+		// Durand-Kerner method works on monic polynomials
 		if (coefficients[0] != 1)
 		{
 			double y = coefficients[0];
@@ -254,31 +254,42 @@ void FindPolynomialRoots(double coefficients[], complex<double> *initial, int de
 		}
 	}
 
-	// Sort solutions based on magnitude of imaginary component
+    // Sort solutions by magnitude of imaginary component
+    // To print complex solutions in conjugate pairs, one after the other
 	sort(initial, initial + degree,
         [](const complex<double> &a, const complex<double> &b)
 		{
 			return abs(a.imag()) < abs(b.imag());
-	});
+        });
 
 	PrintSolutions(initial, degree);
 }
 
 void PrintSolutions(complex<double> *initial, int degree)
 {
-	for (int i = 0; i < degree; i++)
-	{
-		cout << "X" << setw(2) << left << ++counter << " = " << setw(10) << fixed <<
-			setprecision(5) << initial[i].real();
-		if (initial[i].imag() > 0)
-			cout << "+ " << initial[i].imag() << 'i';
-		else if (initial[i].imag() < 0)
-		{
-			cout << "- " << initial[i].imag() *-1 << 'i';
-		}
+    // Loop through each solution of the polynomial equation
+    for (int i = 0; i < degree; i++)
+    {
+        // Increment the counter and print "X<counter>"
+        counter = i + 1;
+        cout << "X" << setw(2) << left << counter << " = ";
 
-		cout << endl;
-	}
+        // Print the real part of the solution
+        cout << setw(10) << fixed << setprecision(5) << initial[i].real();
+
+        // Check if the imaginary part is positive or negative
+        if (initial[i].imag() > 0)
+        {
+            // If positive, print "+ <imaginary part>i"
+            cout << "+ " << initial[i].imag() << 'i';
+        }
+        else if (initial[i].imag() < 0)
+        {
+            // If negative, print "- <absolute value of the imaginary part>i"
+            cout << "- " << abs(initial[i].imag()) << 'i';
+        }
+        cout << endl;
+    }
 }
 
 bool IsValidPolynomialExpression(string & input_polynomial)
